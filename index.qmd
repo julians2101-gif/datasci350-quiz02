@@ -1,0 +1,19 @@
+---
+title: "Home"
+---
+
+# Welcome to Box Office Numbers
+
+This website explores a dataset of 104 well-known films released between 1980 and 2025. The dataset includes production budgets, worldwide box-office revenues, film runtimes, IMDb ratings, and franchise information.
+
+Through three analysis pages, we examine the relationship between production budgets and revenues, investigate how film runtime relates to IMDb ratings, and explore box-office performance across James Bond films.
+
+## Explore the Analysis
+
+- [Budget and Revenue](budget-revenue.qmd)
+- [Runtime and Ratings](runtime-rating.qmd)
+- [The Bond Films](bond.qmd)
+
+## AI Tools Disclosure
+
+I used ChatGPT to assist with understanding Quarto, Python code, and Git commands while completing this quiz.

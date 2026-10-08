@@ -1,0 +1,27 @@
+---
+title: "Budget and Revenue"
+---
+
+# Film Budgets and Worldwide Revenue
+
+This page explores the relationship between production budgets and worldwide box-office revenues. As shown in @fig-budget-revenue, the scatter plot helps us examine whether films with larger budgets tend to generate higher revenues.
+
+```{python}
+#| label: fig-budget-revenue
+#| fig-cap: "Production budget versus worldwide box-office revenue"
+#| echo: true
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+films = pd.read_csv("films.csv")
+
+plt.figure(figsize=(8, 5))
+plt.scatter(films["budget_musd"], films["revenue_musd"])
+
+plt.xlabel("Production Budget (Million USD)")
+plt.ylabel("Worldwide Revenue (Million USD)")
+plt.title("Film Budget vs. Worldwide Revenue")
+plt.grid(True, alpha=0.3)
+plt.show()
+```

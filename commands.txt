@@ -1,0 +1,37 @@
+DATASCI 350 - QUIZ 02
+COMMAND LOG
+
+SETUP - FORK AND CLONE REPOSITORY
+
+cd ~
+git clone https://github.com/julians2101-gif/datasci350-quiz02.git
+cd datasci350-quiz02
+pwd
+ls -a
+code .
+.
+open -a "Visual Studio Code" .
+touch commands.txt
+
+TASK 1 - CREATE QUARTO WEBSITE
+
+quarto create project website .
+
+Explanation:
+Created the Quarto website inside the cloned GitHub
+repository. Quarto generated _quarto.yml, index.qmd,
+about.qmd, styles.css, and .gitignore.
+
+TASK 2 - UPDATE GITIGNORE
+
+Edited .gitignore in VS Code to add:
+/_site/
+__pycache__/
+
+git add .gitignore
+git commit -m "Add gitignore"
+git status
+
+Explanation:
+The .gitignore file prevents generated website files
+and temporary Python files from being tracked by Git.

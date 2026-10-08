@@ -1,0 +1,16 @@
+{
+  "hash": "21265846d35852ed7660bcee30964f67",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Runtime and Ratings\"\n---\n\n# Film Runtime and IMDb Ratings\n\nThis page examines whether film runtime is related to IMDb ratings. As shown in @fig-runtime-rating, the scatter plot compares the length of each film with its IMDb rating.\n\n::: {#cell-fig-runtime-rating .cell execution_count=1}\n``` {.python .cell-code}\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\nfilms = pd.read_csv(\"films.csv\")\n\nplt.figure(figsize=(8, 5))\nplt.scatter(films[\"runtime_min\"], films[\"imdb_rating\"])\n\nplt.xlabel(\"Runtime (Minutes)\")\nplt.ylabel(\"IMDb Rating (0-10)\")\nplt.title(\"Film Runtime vs. IMDb Rating\")\nplt.grid(True, alpha=0.3)\nplt.show()\n```\n\n::: {.cell-output .cell-output-display}\n![Relationship between film runtime and IMDb rating](runtime-rating_files/figure-html/fig-runtime-rating-output-1.png){#fig-runtime-rating width=663 height=449}\n:::\n:::\n\n\n## Average IMDb Rating by Decade\n\nThe following table displays the mean IMDb rating for films released in each decade.\n\n::: {#7b1f322b .cell execution_count=2}\n``` {.python .cell-code}\nfilms[\"decade\"] = films[\"year\"] // 10 * 10\n\ndecade_ratings = (\n    films.groupby(\"decade\")[\"imdb_rating\"]\n    .mean()\n    .round(2)\n)\n\ndecade_ratings.to_frame(name=\"Mean IMDb Rating\")\n```\n\n::: {.cell-output .cell-output-display execution_count=2}\n```{=html}\n<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>Mean IMDb Rating</th>\n    </tr>\n    <tr>\n      <th>decade</th>\n      <th></th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>1980</th>\n      <td>8.01</td>\n    </tr>\n    <tr>\n      <th>1990</th>\n      <td>7.70</td>\n    </tr>\n    <tr>\n      <th>2000</th>\n      <td>7.94</td>\n    </tr>\n    <tr>\n      <th>2010</th>\n      <td>7.83</td>\n    </tr>\n    <tr>\n      <th>2020</th>\n      <td>7.44</td>\n    </tr>\n  </tbody>\n</table>\n</div>\n```\n:::\n:::\n\n\n",
+    "supporting": [
+      "runtime-rating_files"
+    ],
+    "filters": [],
+    "includes": {
+      "include-in-header": [
+        "<script src=\"https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js\" integrity=\"sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx\" crossorigin=\"anonymous\"></script>\n<script src=\"https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js\" integrity=\"sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2\" crossorigin=\"anonymous\" data-relocate-top=\"true\"></script>\n<script type=\"application/javascript\">define('jquery', [],function() {return window.jQuery;})</script>\n"
+      ]
+    }
+  }
+}
