@@ -35,3 +35,304 @@ git status
 Explanation:
 The .gitignore file prevents generated website files
 and temporary Python files from being tracked by Git.
+
+TASK 3 - SET WEBSITE TITLE
+
+Edited _quarto.yml in VS Code.
+
+Changed the website title to:
+Box Office Numbers
+
+Explanation:
+The website title appears in the navigation bar and
+identifies the published website.
+
+TASK 4 - CONFIGURE WEBSITE NAVIGATION
+
+Edited _quarto.yml in VS Code.
+
+Deleted about.qmd using VS Code.
+
+Added the following pages to the navigation bar:
+- index.qmd: Home
+- budget-revenue.qmd: Budget and Revenue
+- runtime-rating.qmd: Runtime and Ratings
+- bond.qmd: The Bond Films
+
+Terminal command:
+ls -a
+
+Explanation:
+The navigation bar allows visitors to move between
+the four pages. The default About page was removed
+because it was not required for the quiz.
+
+TASK 5 - SELECT THEME AND FREEZE SETTINGS
+
+Edited _quarto.yml in VS Code.
+
+Selected the Cosmo theme.
+
+Added:
+execute:
+  freeze: auto
+
+Explanation:
+The Cosmo theme controls the website's appearance.
+The freeze setting allows Quarto to reuse previously
+computed results when the source has not changed.
+
+
+TASK 6 - CREATE HOME PAGE
+
+Edited index.qmd in VS Code.
+
+Added:
+- Home page title
+- Description of the 104-film dataset
+- Links to the three analysis pages
+- AI tools disclosure
+
+Explanation:
+The home page introduces the dataset and provides
+navigation to the analysis pages.
+
+AI disclosure:
+I used ChatGPT to assist with understanding Quarto,
+Python code, and Git commands while completing
+this quiz.
+
+
+TASK 7 - BUDGET AND REVENUE PAGE
+
+Created budget-revenue.qmd using VS Code.
+
+Terminal command:
+ls
+
+Explanation:
+Used pandas to read films.csv and matplotlib to
+create a scatter plot comparing production budgets
+and worldwide box-office revenues.
+
+The x-axis represents production budget in millions
+of US dollars.
+
+The y-axis represents worldwide revenue in millions
+of US dollars.
+
+Added:
+- A short introduction
+- A figure caption using fig-cap
+- A figure label starting with fig-
+- A cross-reference using @fig-budget-revenue
+- echo: true to display the Python code
+
+
+TASK 8 - RUNTIME AND RATINGS PAGE
+
+Created runtime-rating.qmd using VS Code.
+
+Terminal command:
+ls
+
+Explanation:
+Created a scatter plot comparing film runtime in
+minutes with IMDb ratings.
+
+The x-axis represents runtime in minutes.
+The y-axis represents IMDb rating.
+
+Added:
+- A short introduction
+- A figure caption
+- A figure label
+- A cross-reference using @fig-runtime-rating
+- echo: true to display the Python code
+
+Also calculated the average IMDb rating by decade.
+
+Python code used:
+
+films["decade"] = films["year"] // 10 * 10
+
+decade_ratings = (
+    films.groupby("decade")["imdb_rating"]
+    .mean()
+    .round(2)
+)
+
+decade_ratings.to_frame(name="Mean IMDb Rating")
+
+Explanation:
+The decade calculation groups release years into
+decades. The groupby operation calculates the mean
+IMDb rating for films in each decade.
+
+
+TASK 9 - JAMES BOND PAGE
+
+Created bond.qmd using VS Code.
+
+Terminal command:
+ls
+
+Explanation:
+Filtered the dataset to include only films belonging
+to the James Bond franchise.
+
+Python code used:
+
+bond = films[films["franchise"] == "James Bond"]
+bond = bond.sort_values("year")
+
+Created a line plot showing worldwide box-office
+revenue over time.
+
+Used inline Python to display the first and last
+Bond release years automatically.
+
+Inline Python expressions:
+
+int(bond["year"].min())
+int(bond["year"].max())
+
+Explanation:
+The int() function converts NumPy integer values
+into ordinary Python integers.
+
+The line plot shows how Bond film revenues changed
+across release years.
+
+
+TASK 10 - RENDER WEBSITE AND COMMIT FILES
+
+Terminal commands executed:
+
+quarto render
+ls -a
+ls _freeze
+git status
+git add .
+git commit -m "Add site pages and freeze"
+git status
+
+Explanation:
+Rendered all four website pages successfully.
+
+Quarto executed the Python code and generated the
+scatter plots, line plot, and ratings table.
+
+Confirmed that the _freeze directory was created.
+
+Committed the website source files and frozen
+computational results using the required commit
+message.
+
+Commit:
+68221c6 - Add site pages and freeze
+
+
+TASK 11 - PUBLISH WEBSITE TO GITHUB PAGES
+
+Terminal commands executed:
+
+quarto render
+quarto publish gh-pages
+quarto publish gh-pages
+
+Publishing method:
+Quarto GitHub Pages
+
+Explanation:
+Rendered the website again before publishing.
+
+Used quarto publish gh-pages to create the gh-pages
+branch and publish the website.
+
+The first publishing command successfully deployed
+the website.
+
+The second publishing command was unnecessary and
+was canceled at the confirmation prompt.
+
+Published website:
+https://julians2101-gif.github.io/datasci350-quiz02/
+
+
+TASK 12 - VERIFY PUBLISHED WEBSITE
+
+Opened the published website in a browser.
+
+Website:
+https://julians2101-gif.github.io/datasci350-quiz02/
+
+Verified:
+- Home page loads
+- Budget and Revenue page loads
+- Runtime and Ratings page loads
+- The Bond Films page loads
+- Navigation links work
+- Scatter plots are displayed
+- James Bond line plot is displayed
+- Average IMDb rating by decade table is displayed
+- Figure captions and references work
+- Python code is visible
+- AI disclosure appears on the home page
+
+Explanation:
+Checked the published website to confirm that the
+four required pages and their contents were
+successfully deployed.
+
+
+TASK 13 - COMPLETE COMMAND LOG
+
+Edited commands.txt in VS Code.
+
+Added all terminal commands used during the quiz
+and explanations of the website development process.
+
+Final Git commands:
+
+git add commands.txt
+git commit -m "Add command log"
+
+
+TASK 14 - PUSH SOURCE CODE TO GITHUB
+
+Final terminal commands:
+
+git push origin main
+git status
+
+Explanation:
+The quarto publish gh-pages command publishes the
+rendered website but does not push the source files
+on the main branch.
+
+The git push origin main command uploads the source
+code, command log, and commit history to my GitHub
+fork.
+
+GitHub repository:
+https://github.com/julians2101-gif/datasci350-quiz02
+
+
+FINAL SUBMISSION
+
+Published website:
+https://julians2101-gif.github.io/datasci350-quiz02/
+
+GitHub repository:
+https://github.com/julians2101-gif/datasci350-quiz02
+
+
+AI TOOLS ACKNOWLEDGMENT
+
+I used ChatGPT to assist with understanding Quarto
+website configuration, Python plotting syntax,
+Git commands, and troubleshooting.
+
+I reviewed the commands and code used to complete
+the quiz.
