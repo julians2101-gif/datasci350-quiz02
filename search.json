@@ -1,0 +1,58 @@
+[
+  {
+    "objectID": "budget-revenue.html",
+    "href": "budget-revenue.html",
+    "title": "Budget and Revenue",
+    "section": "",
+    "text": "Film Budgets and Worldwide Revenue\nThis page explores the relationship between production budgets and worldwide box-office revenues. As shown in Figure 1, the scatter plot helps us examine whether films with larger budgets tend to generate higher revenues.\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\nfilms = pd.read_csv(\"films.csv\")\n\nplt.figure(figsize=(8, 5))\nplt.scatter(films[\"budget_musd\"], films[\"revenue_musd\"])\n\nplt.xlabel(\"Production Budget (Million USD)\")\nplt.ylabel(\"Worldwide Revenue (Million USD)\")\nplt.title(\"Film Budget vs. Worldwide Revenue\")\nplt.grid(True, alpha=0.3)\nplt.show()\n\n\n\n\n\n\n\nFigure 1: Production budget versus worldwide box-office revenue"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Home",
+    "section": "",
+    "text": "This website explores a dataset of 104 well-known films released between 1980 and 2025. The dataset includes production budgets, worldwide box-office revenues, film runtimes, IMDb ratings, and franchise information.\nThrough three analysis pages, we examine the relationship between production budgets and revenues, investigate how film runtime relates to IMDb ratings, and explore box-office performance across James Bond films.\n\n\n\nBudget and Revenue\nRuntime and Ratings\nThe Bond Films\n\n\n\n\nI used ChatGPT to assist with understanding Quarto, Python code, and Git commands while completing this quiz."
+  },
+  {
+    "objectID": "index.html#explore-the-analysis",
+    "href": "index.html#explore-the-analysis",
+    "title": "Home",
+    "section": "",
+    "text": "Budget and Revenue\nRuntime and Ratings\nThe Bond Films"
+  },
+  {
+    "objectID": "index.html#ai-tools-disclosure",
+    "href": "index.html#ai-tools-disclosure",
+    "title": "Home",
+    "section": "",
+    "text": "I used ChatGPT to assist with understanding Quarto, Python code, and Git commands while completing this quiz."
+  },
+  {
+    "objectID": "runtime-rating.html",
+    "href": "runtime-rating.html",
+    "title": "Runtime and Ratings",
+    "section": "",
+    "text": "This page examines whether film runtime is related to IMDb ratings. As shown in Figure 1, the scatter plot compares the length of each film with its IMDb rating.\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\nfilms = pd.read_csv(\"films.csv\")\n\nplt.figure(figsize=(8, 5))\nplt.scatter(films[\"runtime_min\"], films[\"imdb_rating\"])\n\nplt.xlabel(\"Runtime (Minutes)\")\nplt.ylabel(\"IMDb Rating (0-10)\")\nplt.title(\"Film Runtime vs. IMDb Rating\")\nplt.grid(True, alpha=0.3)\nplt.show()\n\n\n\n\n\n\n\nFigure 1: Relationship between film runtime and IMDb rating\n\n\n\n\n\n\n\nThe following table displays the mean IMDb rating for films released in each decade.\n\nfilms[\"decade\"] = films[\"year\"] // 10 * 10\n\ndecade_ratings = (\n    films.groupby(\"decade\")[\"imdb_rating\"]\n    .mean()\n    .round(2)\n)\n\ndecade_ratings.to_frame(name=\"Mean IMDb Rating\")\n\n\n\n\n\n\n\n\nMean IMDb Rating\n\n\ndecade\n\n\n\n\n\n1980\n8.01\n\n\n1990\n7.70\n\n\n2000\n7.94\n\n\n2010\n7.83\n\n\n2020\n7.44"
+  },
+  {
+    "objectID": "runtime-rating.html#average-imdb-rating-by-decade",
+    "href": "runtime-rating.html#average-imdb-rating-by-decade",
+    "title": "Runtime and Ratings",
+    "section": "",
+    "text": "The following table displays the mean IMDb rating for films released in each decade.\n\nfilms[\"decade\"] = films[\"year\"] // 10 * 10\n\ndecade_ratings = (\n    films.groupby(\"decade\")[\"imdb_rating\"]\n    .mean()\n    .round(2)\n)\n\ndecade_ratings.to_frame(name=\"Mean IMDb Rating\")\n\n\n\n\n\n\n\n\nMean IMDb Rating\n\n\ndecade\n\n\n\n\n\n1980\n8.01\n\n\n1990\n7.70\n\n\n2000\n7.94\n\n\n2010\n7.83\n\n\n2020\n7.44"
+  },
+  {
+    "objectID": "bond.html",
+    "href": "bond.html",
+    "title": "The Bond Films",
+    "section": "",
+    "text": "This page examines how worldwide box-office revenue has changed across the James Bond franchise.\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\nfilms = pd.read_csv(\"films.csv\")\n\nbond = films[films[\"franchise\"] == \"James Bond\"]\nbond = bond.sort_values(\"year\")\n\nThe James Bond films in this dataset span from 1995 to 2021.\n\n\nThe following figure illustrates how James Bond box-office revenue has changed across release years.\n\nplt.figure(figsize=(8, 5))\n\nplt.plot(\n    bond[\"year\"],\n    bond[\"revenue_musd\"],\n    marker=\"o\"\n)\n\nplt.xlabel(\"Release Year\")\nplt.ylabel(\"Worldwide Revenue (Million USD)\")\nplt.title(\"James Bond Worldwide Revenue Over Time\")\nplt.grid(True, alpha=0.3)\nplt.show()\n\n\n\n\n\n\n\nFigure 1: Worldwide box-office revenue of James Bond films over time"
+  },
+  {
+    "objectID": "bond.html#worldwide-revenue-over-time",
+    "href": "bond.html#worldwide-revenue-over-time",
+    "title": "The Bond Films",
+    "section": "",
+    "text": "The following figure illustrates how James Bond box-office revenue has changed across release years.\n\nplt.figure(figsize=(8, 5))\n\nplt.plot(\n    bond[\"year\"],\n    bond[\"revenue_musd\"],\n    marker=\"o\"\n)\n\nplt.xlabel(\"Release Year\")\nplt.ylabel(\"Worldwide Revenue (Million USD)\")\nplt.title(\"James Bond Worldwide Revenue Over Time\")\nplt.grid(True, alpha=0.3)\nplt.show()\n\n\n\n\n\n\n\nFigure 1: Worldwide box-office revenue of James Bond films over time"
+  }
+]
